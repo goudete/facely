@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Header from '@/components/Header';
 import HomeSubHeading from '@/components/HomeSubHeading';
-import ImageList from '@/components/ImageList';
+import ImageGallery from '@/components/ImageGallery';
 import GetStartedButton from '@/components/GetStartedButton';
 
 const images = [
@@ -16,8 +16,8 @@ const Home: NextPage = () => {
     <div className="flex flex-col h-screen items-stretch">
       <Header />
       <HomeSubHeading />
-      <div className="flex-grow overflow-y-scroll pb-24">
-        <ImageList images={images} />
+      <div className="overflow-y-scroll pt-5 pb-28">
+        <ImageGallery images={images} />
       </div>
       <GetStartedButton />
     </div>

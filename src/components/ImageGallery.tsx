@@ -9,7 +9,7 @@ interface ImageListProps {
   images: ImageProps[];
 }
 
-const ImageList: React.FC<ImageListProps> = ({ images }) => {
+const ImageGallery: React.FC<ImageListProps> = ({ images }) => {
   return (
     <div className="flex flex-col items-center py-4">
       {images.map((image, index) => (
@@ -27,4 +27,4 @@ const ImageList: React.FC<ImageListProps> = ({ images }) => {
   );
 }
 
-export default ImageList;
+export default ImageGallery;
