@@ -13,7 +13,7 @@ const images = [
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-col h-screen items-stretch">
+    <div className="flex flex-col pt-24">
       <Header />
       <HomeSubHeading />
       <div className="overflow-y-scroll pt-5 pb-28">
