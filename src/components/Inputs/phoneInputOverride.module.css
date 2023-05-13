@@ -1,0 +1,9 @@
+.PhoneInput input {
+  background-color: transparent !important;
+  color: white !important;
+  flex: 0 1 auto;
+}
+
+.PhoneInputCountrySelectArrow {
+  color: white;
+}
