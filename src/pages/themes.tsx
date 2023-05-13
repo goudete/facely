@@ -6,9 +6,10 @@ import ThemesButton from '@/components/Buttons/ThemesButton';
 
 const Themes: NextPage = () => {
   const router = useRouter();
+  const { number } = router.query;
 
   const handleClick = () => {
-    router.push('/upload')
+    router.push({ pathname: '/upload', query: { number} });
   }
 
   return (
