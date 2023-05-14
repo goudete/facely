@@ -39,7 +39,13 @@ const handler = async (
 
   try {
     const data = await s3.listObjectsV2(params).promise();
-    const urls = data?.Contents?.map(item => `https://${params.Bucket}.s3.${consts.AWS_REGION}.amazonaws.com/${item.Key}`);
+    const urls = data?.Contents?.map(item => (
+      s3.getSignedUrl('getObject', {
+        Bucket: params.Bucket,
+        Key: item.Key,
+        Expires: 604800,
+      })
+    ));
 
     res.status(200).json({ urls });
   } catch (error) {

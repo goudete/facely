@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Header from '@/components/Header';
 import PendingAvatars from '@/components/PendingAvatars';
-import ImageSelectionPreview from '@/components/Images/ImageSelectionPreview';
+import GeneratedImages from '@/components/Images/GeneratedImages';
 import { useEffect, useState } from 'react';
 
 
@@ -27,7 +27,8 @@ const Home: NextPage = () => {
           if (response.ok) {
             console.log('Request succeeded ✅');
             const { urls } = await response.json();
-            setImages(urls);
+            const cleanUrls = urls.slice(1);
+            setImages(cleanUrls);
             return;
           } else {
             console.error('Request failed:', response.status, response.statusText);
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
       {generation === undefined && <PendingAvatars />}
       {images.length > 0 && (
         <div className="overflow-y-scroll pt-5 pb-32">
-          <ImageSelectionPreview images={images} />
+          <GeneratedImages images={images} />
         </div>
       )}
     </div>
