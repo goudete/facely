@@ -25,7 +25,13 @@ const handler = async (
     });
     return res.status(200).json({ message: 'Verification code sent' });
   } catch (error) {
-    console.log("🚀 ~ file: submit-number.ts:23 ~ error:", error)
+    if (error instanceof Error) {
+      console.log("Error in verify:", error);
+      return res.status(500).json({ message: error.message });
+    } else {
+      console.error("Error in verify:", error);
+      return res.status(500).json({ message: 'An error occurred' });
+    }
   }
 }
 
