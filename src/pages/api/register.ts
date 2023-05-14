@@ -26,7 +26,7 @@ const handler = async (
       return res.status(500).json({ message: error.message });
     } else {
       console.error("Error in /register request:", error);
-      return res.status(500).json({ message: 'An error occurred' });
+      return res.status(500).json({ message: 'An error occurred in register' });
     }
   }
 }

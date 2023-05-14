@@ -5,45 +5,62 @@ import Header from '@/components/Header';
 import SelectSubHeading from '@/components/SubHeadings/SelectSubHeading';
 import SelectPhotosButton from '@/components/Buttons/SelectPhotosButton';
 import UploadPhotosButton from '@/components/Buttons/UploadPhotosButton';
-import ImageSelectionPreview from '@/components/ImageSelectionPreview';
+import ImageSelectionPreview from '@/components/Images/ImageSelectionPreview';
 
 const Upload: NextPage = () => {
   const router = useRouter();
   const { number } = router.query;
-  const [images, setImages] = useState<{url: string, file: File}[]>([]);
+  const [images, setImages] = useState<{ url: string, file: File }[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleImageSelection = (files: File[]) => {
-    const imageObjects = files.map(file => ({url: URL.createObjectURL(file), file}));
+    const imageObjects = files.map(file => ({ url: URL.createObjectURL(file), file }));
     setImages(imageObjects);
   };
 
   const onUploadClick = async () => {
-    const formData = new FormData();
-  
-    images.forEach((image, index) => {
-      formData.append(`file${index}`, image.file);
-    });
-
-    if (number !== null && number !== undefined){
-      formData.append('phoneNumber', number as any);
-    }
-  
     try {
-      console.log(formData)
-      const response = await fetch(`/api/upload`, {
-        method: 'POST',
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        console.log('RESPONSE; ', response)
-        throw new Error(`HTTP error! status: ${response.status}`);
+      setLoading(true);
+      const currentUpload = Date.now().toString();
+      const folderName = `${number}/${currentUpload}/raw_images/`;
+      for (const image of images) {
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fileName: image.file.name,
+            fileType: image.file.type,
+            number,
+            currentUpload,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const { url: signedUrl } = await response.json();
+
+        const uploadResponse = await fetch(signedUrl, {
+          method: 'PUT',
+          body: image.file,
+          headers: {
+            'Content-Type': image.file.type,
+          },
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error(`Failed to upload image: status code ${uploadResponse.status}`);
+        }
       }
-  
-      const data = await response.json();
-      console.log(data);
+      setLoading(false);
+      router.push({ pathname: '/home', query: { number } });
     } catch (error) {
-      console.error('There was a problem with the fetch operation: ', error);
+      setLoading(false);
+      alert('Error uploading images');
+      console.error('Error uploading images:', error);
     }
   };
 
@@ -51,7 +68,10 @@ const Upload: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <SelectSubHeading />
-      {images.length > 0 ?
+      {loading && <>
+        <h1>LOADING...</h1>
+      </>}
+      {(!loading && images.length > 0) ?
         <>
           <div className="overflow-y-scroll pt-5 pb-32">
             <ImageSelectionPreview images={images.map(image => image.url)} />

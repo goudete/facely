@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Header from '@/components/Header';
 import HomeSubHeading from '@/components/SubHeadings/HomeSubHeading';
-import ImageGallery from '@/components/ImageGallery';
+import ImageGallery from '@/components/Images/ImageGallery';
 import GetStartedButton from '@/components/Buttons/GetStartedButton';
 
 const images = [
