@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const params = {
       Bucket: consts.AWS_S3_BUCKET_NAME,
-      Key: folderName + fileName,
+      Key: folderName + 'raw_images/' + fileName,
       Expires: 60,
       ContentType: fileType,
     };
