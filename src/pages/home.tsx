@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Header from '@/components/Header';
 import PendingAvatars from '@/components/PendingAvatars';
 import GeneratedImages from '@/components/Images/GeneratedImages';
+import ShareButton from '@/components/Buttons/ShareButton';
 import { useEffect, useState } from 'react';
 
 
@@ -41,14 +42,40 @@ const Home: NextPage = () => {
 
   }, [generation]);
 
+  const onShare = async () => {
+    if (navigator.share) {
+      try {
+        // Use the Web Share API
+        await navigator.share({
+          title: document.title,
+          url: window.location.href,
+        });
+        console.log('Content shared successfully');
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      // Fallback to copy URL to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        console.log('URL copied to clipboard');
+      } catch (err) {
+        console.error('Error copying URL:', err);
+      }
+    }
+  }
+
   return (
     <div className="flex flex-col pt-24">
       <Header />
       {generation === undefined && <PendingAvatars />}
       {images.length > 0 && (
-        <div className="overflow-y-scroll pt-5 pb-32">
-          <GeneratedImages images={images} />
-        </div>
+        <>
+          <div className="overflow-y-scroll pt-5 pb-32">
+            <GeneratedImages images={images} />
+          </div>
+          <ShareButton handleClick={onShare}/>
+        </>
       )}
     </div>
   );
