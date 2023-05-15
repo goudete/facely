@@ -12,8 +12,6 @@ const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) =
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const files = Array.from(event.target.files);
-      console.log("🚀 ~ file: SelectPhotosButton.tsx:11 ~ handleFileChange ~ files:", files)
-
       handleImageSelection(files);
     }
   };

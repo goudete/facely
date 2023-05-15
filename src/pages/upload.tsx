@@ -22,7 +22,7 @@ const Upload: NextPage = () => {
     try {
       setLoading(true);
       const currentUpload = Date.now().toString();
-      const folderName = `${number}/${currentUpload}/raw_images/`;
+      const folderName = `${number}/${currentUpload}/`;
       for (const image of images) {
         const response = await fetch('/api/upload', {
           method: 'POST',
@@ -69,7 +69,6 @@ const Upload: NextPage = () => {
     } catch (error) {
       setLoading(false);
       alert('Error uploading images');
-      console.error('Error uploading images:', error);
     }
   };
 

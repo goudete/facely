@@ -25,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const url = await s3.getSignedUrlPromise('putObject', params);
       return res.status(200).json({ url });
     } catch (err) {
-      console.log("🚀 ~ file: upload.ts:29 ~ handler ~ err:", err);
       return res.status(500).json({ error: 'Error generating URL' });
     }
   } else {

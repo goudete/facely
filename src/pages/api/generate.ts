@@ -23,6 +23,9 @@ const handler = async (
       await axios({
         method: 'POST',
         url: consts.GENERATION_URL,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         data: {
           s3_user_dir_prefix: folderName,
           num_samples: NUM_SAMPLES,
