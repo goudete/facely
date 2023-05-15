@@ -12,8 +12,7 @@ const s3 = new AWS.S3();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const { fileName, fileType, number, currentUpload } = req.body;
-    const folderName = `${number}/${currentUpload}/raw_images/`;
+    const { fileName, fileType, folderName } = req.body;
 
     const params = {
       Bucket: consts.AWS_S3_BUCKET_NAME,
@@ -24,12 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const url = await s3.getSignedUrlPromise('putObject', params);
-      res.status(200).json({ url });
+      return res.status(200).json({ url });
     } catch (err) {
       console.log("🚀 ~ file: upload.ts:29 ~ handler ~ err:", err);
-      res.status(500).json({ error: 'Error generating URL' });
+      return res.status(500).json({ error: 'Error generating URL' });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 }

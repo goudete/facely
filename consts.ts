@@ -10,7 +10,6 @@ const consts = {
   AWS_S3_BUCKET_NAME: process.env.AWS_S3_BUCKET_NAME || '',
   SUPABASE_PROJECT_URL: process.env.SUPABASE_PROJECT_URL || '',
   SUPABASE_API_KEY: process.env.SUPABASE_API_KEY || '',
-
 };
 
 export { consts };

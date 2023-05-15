@@ -32,8 +32,7 @@ const Upload: NextPage = () => {
           body: JSON.stringify({
             fileName: image.file.name,
             fileType: image.file.type,
-            number,
-            currentUpload,
+            folderName,
           }),
         });
 
@@ -56,6 +55,16 @@ const Upload: NextPage = () => {
         }
       }
       setLoading(false);
+      fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phoneNumber: number,
+          folderName
+        }),
+      });
       router.push({ pathname: '/home', query: { number } });
     } catch (error) {
       setLoading(false);

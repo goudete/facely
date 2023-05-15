@@ -39,7 +39,7 @@ const Verify: NextPage = () => {
       (async () => {
         try {
           await confirmVerificationCode();
-          router.push({ pathname: '/themes', query: { number } });
+          router.push({ pathname: '/upload', query: { number } });
           return;
         } catch (error) {
           console.log(error);

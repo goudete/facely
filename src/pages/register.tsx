@@ -23,8 +23,18 @@ const Register: NextPage = () => {
       });
 
       if (response.ok) {
-        console.log('Request succeeded ✅')
-        return;
+        const data = await response.json();
+        if (data.message === 'User already exists') {
+          router.push({
+            pathname: '/upload',
+            query: { number: phoneNumber }
+          });
+        } else {
+          router.push({
+            pathname: '/verify',
+            query: { number: phoneNumber }
+          });
+        }
       } else {
         console.error('Request failed:', response.status, response.statusText);
       }
@@ -36,15 +46,11 @@ const Register: NextPage = () => {
   const onChange = (value: string) => {
     setPhoneNumber(value);
   }
-  const handleClick = () => {
+  const handleClick = async () => {
     if (phoneNumber === '' || !isValidPhoneNumber(phoneNumber)) {
       return;
     };
-    submitNumber();
-    router.push({
-      pathname: '/verify',
-      query: { number: phoneNumber }
-    });
+    await submitNumber();
   };
   const isValidPhoneNumber = (phoneNumber: string) => {
     try {
