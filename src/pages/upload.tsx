@@ -76,22 +76,23 @@ const Upload: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <SelectSubHeading />
-      {loading && <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
-      </div>}
-      {(!loading && images.length > 0) ?
+      {loading ? (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
+        </div>
+      ) : images.length > 0 ? (
         <>
           <div className="overflow-y-scroll pt-5 pb-32">
             <ImageSelectionPreview images={images.map(image => image.url)} />
           </div>
           <UploadPhotosButton onUploadClick={onUploadClick} />
         </>
-        : <>
+      ) : (
+        <>
           {/* add sample images here */}
           <SelectPhotosButton handleImageSelection={handleImageSelection} />
         </>
-      }
-
+      )}
     </div>
   );
 }

@@ -64,10 +64,6 @@ const Register: NextPage = () => {
   useEffect(() => {
     if (isValidPhoneNumber(phoneNumber)) {
       submitNumber();
-      router.push({
-        pathname: '/verify',
-        query: { number: phoneNumber }
-      });
       return;
     }
   }, [phoneNumber]);
