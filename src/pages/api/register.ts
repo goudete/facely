@@ -19,7 +19,11 @@ const handler = async (
         phoneNumber
       }
     });
-    return res.status(200).json({ message: 'Verification code sent' });
+    if (data.message === 'User already exists') {
+      return res.status(200).json({ message: 'User already exists' });
+    } else {
+      return res.status(200).json({ message: 'Verification code sent' });
+    }
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error in /register request:", error);
