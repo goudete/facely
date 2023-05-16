@@ -12,6 +12,7 @@ const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) =
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const files = Array.from(event.target.files);
+      files.forEach((file) => console.log('FILE TYPE: ', file.type));
       handleImageSelection(files);
     }
   };
