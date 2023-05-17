@@ -90,7 +90,9 @@ const Upload: NextPage = () => {
         </>
       ) : (
         <>
+        <div className="overflow-y-scroll pb-48">
           <SampleUpload />
+        </div>
           <SelectPhotosButton handleImageSelection={handleImageSelection} />
         </>
       )}
