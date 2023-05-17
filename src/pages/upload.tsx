@@ -6,6 +6,7 @@ import SelectSubHeading from '@/components/SubHeadings/SelectSubHeading';
 import SelectPhotosButton from '@/components/Buttons/SelectPhotosButton';
 import UploadPhotosButton from '@/components/Buttons/UploadPhotosButton';
 import ImageSelectionPreview from '@/components/Images/ImageSelectionPreview';
+import SampleUpload from '@/components/Images/SampleUpload';
 
 const Upload: NextPage = () => {
   const router = useRouter();
@@ -89,7 +90,7 @@ const Upload: NextPage = () => {
         </>
       ) : (
         <>
-          {/* add sample images here */}
+          <SampleUpload />
           <SelectPhotosButton handleImageSelection={handleImageSelection} />
         </>
       )}
