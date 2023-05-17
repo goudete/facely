@@ -15,8 +15,8 @@ const SampleUpload = () => {
         </p>
         <div className="flex space-x-2">
           <Image width={85} height={85} src="/sample-upload/good-photos/good-2.jpg" className="rounded-lg" alt="1" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/good-3.jpg" className="rounded-lg" alt="2" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/good-4.jpg" className="rounded-lg" alt="3" />
+          <Image width={85} height={85} src="/sample-upload/good-photos/good-6.jpg" className="rounded-lg" alt="2" />
+          <Image width={85} height={85} src="/sample-upload/good-photos/good-7.jpg" className="rounded-lg" alt="3" />
         </div>
       </div>
       <div className="flex flex-col items-start space-y-2 max-w-[85%] md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-4">
