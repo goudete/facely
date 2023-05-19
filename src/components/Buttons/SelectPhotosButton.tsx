@@ -27,10 +27,10 @@ const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) =
         style={{ display: 'none' }}
       />
       <button
-        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-green-500 rounded-full block"
+        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-indigo-600 drop-shadow-xl rounded-full block"
         onClick={handleClick}
       >
-        Select Photos
+        Select Selfies
       </button>
       <div className="flex flex-row justify-center mt-6 mb-1">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

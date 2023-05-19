@@ -21,6 +21,10 @@ const Upload: NextPage = () => {
 
   const onUploadClick = async () => {
     try {
+      if (images.length < 5) {
+        alert('Please select at least 5 selfies.\n This helps guarantee good avatars.');
+        return;
+      }
       setLoading(true);
       const currentUpload = Date.now().toString();
       const folderName = `${number}/${currentUpload}/`;

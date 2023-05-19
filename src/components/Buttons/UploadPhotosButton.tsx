@@ -8,10 +8,10 @@ const UploadPhotosButton = ({ onUploadClick }: UploadPhotosButtonProps) => {
   return (
     <div className="fixed inset-x-0 bottom-0 p-4 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg">
       <button
-        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-green-500 rounded-full block"
+        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-indigo-600 drop-shadow-xl rounded-full block"
         onClick={onUploadClick}
       >
-        Upload Photos
+        Submit Photos
       </button>
       <div className="flex flex-row justify-center mt-6 mb-1">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

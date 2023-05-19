@@ -5,7 +5,7 @@ interface GetStartedButtonProps {
 const GetStartedButton = ({ handleClick }: GetStartedButtonProps) => {
   return (
     <div className="fixed inset-x-0 bottom-0 p-4 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg">
-      <button className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-green-500 rounded-full block" onClick={handleClick}>
+      <button className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-indigo-600 drop-shadow-xl rounded-full block" onClick={handleClick}>
         Get Started
       </button>
       <div className="flex flex-row justify-center mt-6 mb-1">
