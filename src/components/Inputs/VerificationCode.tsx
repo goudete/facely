@@ -14,7 +14,7 @@ const VerificationCode = ({ onChange, verificationCode }: VerificationCodeProps)
         value={verificationCode}
         onChange={e => onChange(e.target.value)}
       />
-      <button className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-green-500 rounded-full block mt-5">
+      <button className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-indigo-600 drop-shadow-xl rounded-full block mt-5">
         Next
       </button>
       <div className="flex flex-row justify-center mt-6 mb-1">

@@ -2,8 +2,9 @@ import { useRef } from 'react';
 
 interface SelectPhotosButtonProps {
   handleImageSelection: (files: any) => void;
+  title: string;
 }
-const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) => {
+const SelectPhotosButton = ({ handleImageSelection, title }: SelectPhotosButtonProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleClick = () => {
     fileInputRef.current?.click();
@@ -12,7 +13,6 @@ const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) =
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const files = Array.from(event.target.files);
-      files.forEach((file) => console.log('FILE TYPE: ', file.type));
       handleImageSelection(files);
     }
   };
@@ -27,10 +27,10 @@ const SelectPhotosButton = ({ handleImageSelection }: SelectPhotosButtonProps) =
         style={{ display: 'none' }}
       />
       <button
-        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-green-500 rounded-full block"
+        className="flex items-center justify-center w-10/12 mx-auto py-4 text-xl font-semibold text-white bg-indigo-600 drop-shadow-xl rounded-full block"
         onClick={handleClick}
       >
-        Select Photos
+        {title}
       </button>
       <div className="flex flex-row justify-center mt-6 mb-1">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

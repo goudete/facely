@@ -54,14 +54,12 @@ const Home: NextPage = () => {
           title: document.title,
           url: window.location.href + `&shared=true`,
         });
-        console.log('Content shared successfully');
       } catch (err) {
         console.error('Error sharing:', err);
       }
     } else {
       try {
         await navigator.clipboard.writeText(window.location.href + `&shared=true`);
-        console.log('URL copied to clipboard');
       } catch (err) {
         console.error('Error copying URL:', err);
       }

@@ -15,6 +15,7 @@ const GeneratedImages = ({ images }: GeneratedImagesProps) => {
             width={250}
             height={250}
             className="rounded-lg"
+            priority={index < 2}
           />
         </div>
       ))}

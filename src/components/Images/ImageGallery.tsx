@@ -20,6 +20,7 @@ const ImageGallery: React.FC<ImageListProps> = ({ images }) => {
             width={250}
             height={250}
             className="rounded-lg"
+            priority={index < 2}
           />
         </div>
       ))}

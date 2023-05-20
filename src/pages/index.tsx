@@ -24,7 +24,7 @@ const Home: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <HomeSubHeading />
-      <div className="overflow-y-scroll pt-5 pb-28">
+      <div className="overflow-y-scroll pt-4 pb-48">
         <ImageGallery images={images} />
       </div>
       <GetStartedButton handleClick={handleClick} />
