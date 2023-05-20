@@ -12,11 +12,14 @@ const Upload: NextPage = () => {
   const router = useRouter();
   const { number } = router.query;
   const [images, setImages] = useState<{ url: string, file: File }[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const handleImageSelection = (files: File[]) => {
-    const imageObjects = files.map(file => ({ url: URL.createObjectURL(file), file }));
-    setImages(imageObjects);
+    const newImages = files.map(file => ({ url: URL.createObjectURL(file), file }));
+    setImages([...images, ...newImages]);
+  };
+
+  const handleRemove = (index: number) => {
+    setImages(images.filter((_, i) => i !== index));
   };
 
   const onUploadClick = async () => {
@@ -25,7 +28,7 @@ const Upload: NextPage = () => {
         alert('Please select at least 5 selfies.\n This helps guarantee good avatars.');
         return;
       }
-      setLoading(true);
+      router.push({ pathname: '/home', query: { number } });
       const currentUpload = Date.now().toString();
       const folderName = `${number}/${currentUpload}/`;
       for (const image of images) {
@@ -59,7 +62,6 @@ const Upload: NextPage = () => {
           throw new Error(`Failed to upload image: status code ${uploadResponse.status}`);
         }
       }
-      setLoading(false);
       fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -70,10 +72,8 @@ const Upload: NextPage = () => {
           folderName
         }),
       });
-      router.push({ pathname: '/home', query: { number } });
     } catch (error) {
-      setLoading(false);
-      alert('Error uploading images');
+      console.error('Error uploading images');
     }
   };
 
@@ -81,23 +81,33 @@ const Upload: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <SelectSubHeading />
-      {loading ? (
-        <div className="flex items-center justify-center h-screen">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
-        </div>
-      ) : images.length > 0 ? (
+      {images.length === 0 && (
+        <>
+          <div className="overflow-y-scroll pb-48">
+            <SampleUpload />
+          </div>
+          <SelectPhotosButton title={'Select Selfies'} handleImageSelection={handleImageSelection} />
+        </>
+      )}
+      {images.length > 0 && images.length < 5 && (
+        <>
+          <div className="flex justify-between items-center p-1 mt-5">
+            <h1 className="text-center mx-auto max-w-[90%] rounded-md bg-indigo-500 p-3">
+              Please select at least 5 selfies
+            </h1>
+          </div>
+          <div className="overflow-y-scroll pt-5 pb-32">
+            <ImageSelectionPreview images={images.map(image => image.url)} onRemove={handleRemove} />
+          </div>
+          <SelectPhotosButton title={'Select more Selfies'} handleImageSelection={handleImageSelection} />
+        </>
+      )}
+      {images.length >= 5 && (
         <>
           <div className="overflow-y-scroll pt-5 pb-32">
-            <ImageSelectionPreview images={images.map(image => image.url)} />
+            <ImageSelectionPreview images={images.map(image => image.url)} onRemove={handleRemove} />
           </div>
           <UploadPhotosButton onUploadClick={onUploadClick} />
-        </>
-      ) : (
-        <>
-        <div className="overflow-y-scroll pb-48">
-          <SampleUpload />
-        </div>
-          <SelectPhotosButton handleImageSelection={handleImageSelection} />
         </>
       )}
     </div>

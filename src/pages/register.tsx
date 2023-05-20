@@ -14,30 +14,18 @@ const Register: NextPage = () => {
 
   const submitNumber = async () => {
     try {
-      const response = await fetch('/api/register', {
+      router.push({
+        pathname: '/upload',
+        query: { number: phoneNumber }
+      });
+
+      fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ phoneNumber }),
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data.message === 'User already exists') {
-          router.push({
-            pathname: '/upload',
-            query: { number: phoneNumber }
-          });
-        } else {
-          router.push({
-            pathname: '/verify',
-            query: { number: phoneNumber }
-          });
-        }
-      } else {
-        console.error('Request failed:', response.status, response.statusText);
-      }
     } catch (error) {
       console.error('Error Submitting number', error);
     }
@@ -47,7 +35,7 @@ const Register: NextPage = () => {
     setPhoneNumber(value);
   }
   const handleClick = async () => {
-    if (phoneNumber === '' || !isValidPhoneNumber(phoneNumber)) {
+    if (!isValidPhoneNumber(phoneNumber)) {
       return;
     };
     await submitNumber();
