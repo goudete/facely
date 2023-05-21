@@ -2,7 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['ai-avatar-generator.s3.amazonaws.com'],
+    domains: [
+      'ai-avatar-generator.s3.amazonaws.com',
+      'public-michelangelo-ai.s3.amazonaws.com'
+    ],
   },
 }
 

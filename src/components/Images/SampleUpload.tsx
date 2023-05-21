@@ -14,11 +14,11 @@ const SampleUpload = () => {
           Close up selfies from different angles
         </p>
         <div className="flex space-x-2 overflow-x-auto">
-          <Image width={85} height={85} src="/sample-upload/good-photos/yo-1.jpeg" className="rounded-lg" alt="1" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/yo-2.jpeg" className="rounded-lg" alt="2" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/yo-3.jpeg" className="rounded-lg" alt="3" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/yo-4.jpeg" className="rounded-lg" alt="4" />
-          <Image width={85} height={85} src="/sample-upload/good-photos/yo-5.jpeg" className="rounded-lg" alt="5" />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/sample-1.jpg" className="rounded-lg" alt="1" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/sample-5.jpg" className="rounded-lg" alt="5" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/sample-4.jpg" className="rounded-lg" alt="4" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/sample-2.jpg" className="rounded-lg" alt="2" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/sample-3.jpg" className="rounded-lg" alt="3" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
         </div>
       </div>
       <div className="flex flex-col items-start space-y-2 max-w-[85%] md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-4">
@@ -32,11 +32,11 @@ const SampleUpload = () => {
           Group pics, face not visible, sunglasses, far away.
         </p>
         <div className="flex space-x-2 overflow-x-auto">
-          <Image width={85} height={85} src="/sample-upload/bad-photos/bad-6.jpg" className="rounded-lg" alt="4" />
-          <Image width={85} height={85} src="/sample-upload/bad-photos/bad-2.jpg" className="rounded-lg" alt="5" />
-          <Image width={85} height={85} src="/sample-upload/bad-photos/bad-4.jpg" className="rounded-lg" alt="6" />
-          <Image width={85} height={85} src="/sample-upload/bad-photos/hasbi-2.jpeg" className="rounded-lg" alt="6" />
-          <Image width={85} height={85} src="/sample-upload/bad-photos/hasbi-3.jpeg" className="rounded-lg" alt="6" />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/bad-6.jpg" className="rounded-lg" alt="4" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/bad-2.jpg" className="rounded-lg" alt="5" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/bad-4.jpg" className="rounded-lg" alt="6" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/hasbi-2.jpeg" className="rounded-lg" alt="6" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
+          <Image width={85} height={85} src="https://public-michelangelo-ai.s3.amazonaws.com/hasbi-3.jpeg" className="rounded-lg" alt="6" placeholder={'blur'} blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'} />
         </div>
       </div>
     </div>

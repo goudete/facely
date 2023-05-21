@@ -7,12 +7,15 @@ const handler = async (
   res: NextApiResponse
 ) => {
   if (req.method === 'POST') {
-    const { phoneNumber, folderName } = req.body;
+    const { phoneNumber, folderName, theme } = req.body;
     if (phoneNumber === undefined || phoneNumber === null) {
       return res.status(400).json({ message: 'Enter a valid number' });
     }
     if (folderName === undefined || folderName === null) {
       return res.status(400).json({ message: 'Enter a valid path' });
+    }
+    if (theme === undefined || theme === null) {
+      return res.status(400).json({ message: 'Enter a valid theme' });
     }
     const NUM_SAMPLES = 15;
     const UPLOAD_HF = false;
@@ -31,7 +34,8 @@ const handler = async (
           num_samples: NUM_SAMPLES,
           upload_ckpt: UPLOAD_CKPT,
           prompt: PROMPT,
-          upload_hf: UPLOAD_HF
+          upload_hf: UPLOAD_HF,
+          theme
         }
       });
       return res.status(200).json({ message: 'Generation has started' });

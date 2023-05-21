@@ -16,17 +16,26 @@ const ImageSelectionPreview = ({ images, onRemove }: ImageSelectionPreviewProps)
             width={250}
             height={250}
             className="rounded-lg"
+            placeholder={'blur'}
+            blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="red"
-            className="absolute top-0 right-0 h-6 w-6 m-1 cursor-pointer"
-            onClick={() => onRemove(index)}
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+          <div className="absolute top-0 right-0 h-6 w-6 m-1 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-4 w-4 text-white-500"
+              onClick={() => onRemove(index)}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
         </div>
       ))}
     </div>

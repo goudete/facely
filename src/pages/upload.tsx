@@ -10,7 +10,7 @@ import SampleUpload from '@/components/Images/SampleUpload';
 
 const Upload: NextPage = () => {
   const router = useRouter();
-  const { number } = router.query;
+  const { number, theme } = router.query;
   const [images, setImages] = useState<{ url: string, file: File }[]>([]);
 
   const handleImageSelection = (files: File[]) => {
@@ -69,7 +69,8 @@ const Upload: NextPage = () => {
         },
         body: JSON.stringify({
           phoneNumber: number,
-          folderName
+          folderName,
+          theme
         }),
       });
     } catch (error) {

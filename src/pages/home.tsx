@@ -6,11 +6,12 @@ import GeneratedImages from '@/components/Images/GeneratedImages';
 import ShareButton from '@/components/Buttons/ShareButton';
 import GetStartedButton from '@/components/Buttons/GetStartedButton';
 import { useEffect, useState } from 'react';
+import CreateMoreButton from '@/components/Buttons/CreateMoreButton';
 
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const { generation, shared } = router.query;
+  const { generation, shared, number } = router.query;
 
   const [images, setImages] = useState<string[]>([]);
 
@@ -65,11 +66,24 @@ const Home: NextPage = () => {
       }
     }
   }
+  const onCreateMoreClick = () => {
+    router.push({
+      pathname: '/themes',
+      query: { number }
+    });
+  }
 
   return (
     <div className="flex flex-col pt-24">
       <Header />
-      {generation === undefined && <PendingAvatars />}
+      {generation === undefined && (
+        <>
+          <div className="overflow-y-scroll pb-48">
+            <PendingAvatars />
+          </div>
+          <CreateMoreButton handleClick={onCreateMoreClick} />
+        </>
+      )}
       {images.length > 0 && (
         <>
           <div className="overflow-y-scroll pt-5 pb-32">
