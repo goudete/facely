@@ -21,6 +21,8 @@ const ImageGallery: React.FC<ImageListProps> = ({ images }) => {
             height={250}
             className="rounded-lg"
             priority={index < 2}
+            placeholder={'blur'}
+            blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}
           />
         </div>
       ))}

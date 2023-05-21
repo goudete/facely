@@ -6,11 +6,11 @@ import ImageGallery from '@/components/Images/ImageGallery';
 import GetStartedButton from '@/components/Buttons/GetStartedButton';
 
 const images = [
-  { src: '/images/demo3.png', alt: 'Image 3' },
-  { src: '/images/demo5.png', alt: 'Image 5' },
-  { src: '/images/demo2.png', alt: 'Image 2' },
-  { src: '/images/demo1.png', alt: 'Image 1' },
-  { src: '/images/demo4.png', alt: 'Image 4' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo3.png', alt: 'Image 3' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo5.png', alt: 'Image 5' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo2.png', alt: 'Image 2' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo1.png', alt: 'Image 1' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo4.png', alt: 'Image 4' },
 ];
 
 const Home: NextPage = () => {
