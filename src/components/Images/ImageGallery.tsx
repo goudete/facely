@@ -17,7 +17,7 @@ const ImageGallery: React.FC<ImageListProps> = ({ images }) => {
         <div key={index} className="my-4 max-w-[85%]">
           <div className='overflow-x-scroll flex flex-nowrap space-x-2'>
             <Image
-              src={image.src}
+              src={image.original}
               alt={image.alt}
               width={150}
               height={150}
@@ -27,7 +27,7 @@ const ImageGallery: React.FC<ImageListProps> = ({ images }) => {
               blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}
             />
             <Image
-              src={image.original}
+              src={image.src}
               alt={image.alt}
               width={150}
               height={150}
