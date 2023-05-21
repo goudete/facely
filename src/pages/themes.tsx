@@ -13,7 +13,7 @@ interface ThemeProps {
 };
 const Themes: NextPage = () => {
   const router = useRouter();
-  const { number } = router.query;
+  const { number, folder } = router.query;
   const [selectedTheme, setselectedTheme] = useState<number | null>(null);
   const [displayThemeError, setDisplayThemeError] = useState<boolean>(false);
 
@@ -23,8 +23,19 @@ const Themes: NextPage = () => {
       return;
     }
     router.push({
-      pathname: '/upload',
-      query: { number, theme: getThemeKeyById(selectedTheme) },
+      pathname: '/home',
+      query: { number },
+    });
+    fetch('/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phoneNumber: number,
+        folderName: folder,
+        theme: selectedTheme
+      }),
     });
   }
 

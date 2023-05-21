@@ -6,11 +6,10 @@ import ImageGallery from '@/components/Images/ImageGallery';
 import GetStartedButton from '@/components/Buttons/GetStartedButton';
 
 const images = [
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo3.png', alt: 'Image 3' },
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo5.png', alt: 'Image 5' },
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo2.png', alt: 'Image 2' },
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo1.png', alt: 'Image 1' },
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo4.png', alt: 'Image 4' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo3.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/wa.jpeg', alt: 'Image 3' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo5.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/rau.jpeg', alt: 'Image 5' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo2.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/meb.jpeg', alt: 'Image 2' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/alfonso_dream_portait.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/alfonso_raw.jpg', alt: 'Image 1' },
 ];
 
 const Home: NextPage = () => {

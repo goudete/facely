@@ -28,9 +28,9 @@ const Upload: NextPage = () => {
         alert('Please select at least 5 selfies.\n This helps guarantee good avatars.');
         return;
       }
-      router.push({ pathname: '/home', query: { number } });
       const currentUpload = Date.now().toString();
       const folderName = `${number}/${currentUpload}/`;
+      router.push({ pathname: '/themes', query: { number, folder: folderName } });
       for (const image of images) {
         const response = await fetch('/api/upload', {
           method: 'POST',
@@ -62,17 +62,6 @@ const Upload: NextPage = () => {
           throw new Error(`Failed to upload image: status code ${uploadResponse.status}`);
         }
       }
-      fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phoneNumber: number,
-          folderName,
-          theme
-        }),
-      });
     } catch (error) {
       console.error('Error uploading images');
     }

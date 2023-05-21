@@ -15,7 +15,7 @@ const Register: NextPage = () => {
   const submitNumber = async () => {
     try {
       router.push({
-        pathname: '/themes',
+        pathname: '/upload',
         query: { number: phoneNumber }
       });
 
