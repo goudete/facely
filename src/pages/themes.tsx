@@ -61,7 +61,7 @@ const Themes: NextPage = () => {
           </h1>
         </div>
       )}
-      <div className="flex flex-wrap justify-center mt-4">
+      <div className="flex flex-wrap justify-center mt-4 pb-48">
         {themes.map((theme, index) => (
           <div
             key={index}
