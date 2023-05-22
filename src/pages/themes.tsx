@@ -34,7 +34,7 @@ const Themes: NextPage = () => {
       body: JSON.stringify({
         phoneNumber: number,
         folderName: folder,
-        theme: selectedTheme
+        theme: getThemeKeyById(selectedTheme)
       }),
     });
   }

@@ -20,7 +20,6 @@ const handler = async (
     const NUM_SAMPLES = 15;
     const UPLOAD_HF = false;
     const UPLOAD_CKPT = false;
-    const PROMPT = `{0}, Viking, intricate character portrait, beautiful, 8k resolution, dynamic lighting, hyperdetailed, quality 3D rendered, volumetric lighting, detailed background, artstation character portrait`
 
     try {
       await axios({
@@ -33,7 +32,6 @@ const handler = async (
           s3_user_dir_prefix: folderName,
           num_samples: NUM_SAMPLES,
           upload_ckpt: UPLOAD_CKPT,
-          prompt: PROMPT,
           upload_hf: UPLOAD_HF,
           theme
         }
