@@ -10,7 +10,7 @@ import SampleUpload from '@/components/Images/SampleUpload';
 
 const Upload: NextPage = () => {
   const router = useRouter();
-  const { number, theme } = router.query;
+  const { number } = router.query;
   const [images, setImages] = useState<{ url: string, file: File }[]>([]);
 
   const handleImageSelection = (files: File[]) => {
@@ -81,7 +81,7 @@ const Upload: NextPage = () => {
       )}
       {images.length > 0 && images.length < 5 && (
         <>
-          <div className="flex justify-between items-center p-1 mt-5">
+          <div className="flex justify-between items-center p-1 mt-12">
             <h1 className="text-center mx-auto max-w-[90%] rounded-md bg-indigo-500 p-3">
               Please select at least 5 selfies
             </h1>

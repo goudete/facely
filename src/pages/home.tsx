@@ -15,7 +15,7 @@ const Home: NextPage = () => {
 
   const [images, setImages] = useState<string[]>([]);
 
-  const handleClick = () => {
+  const handleGetStartedClick = () => {
     router.push('/register');
   };
 
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
   }
   const onCreateMoreClick = () => {
     router.push({
-      pathname: '/themes',
+      pathname: '/upload',
       query: { number }
     });
   }
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
             <GeneratedImages images={images} />
           </div>
           {shared ? (
-            <GetStartedButton handleClick={handleClick} />
+            <GetStartedButton handleClick={handleGetStartedClick} />
           ) : (
             <ShareButton handleClick={onShare}/>
           )}
