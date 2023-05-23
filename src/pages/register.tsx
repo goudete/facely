@@ -48,9 +48,18 @@ const Register: NextPage = () => {
       return false;
     }
   }
+  const isUSOrMexNumber = (phoneNumber: string) => {
+    try {
+      const phone = parsePhoneNumber(phoneNumber);
+      const country = phone.country;
+      return country === 'US' || country === 'MX';
+    } catch (error) {
+      return false;
+    }
+  }
 
   useEffect(() => {
-    if (isValidPhoneNumber(phoneNumber)) {
+    if (isValidPhoneNumber(phoneNumber) && isUSOrMexNumber(phoneNumber)) {
       submitNumber();
       return;
     }
