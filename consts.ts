@@ -11,7 +11,7 @@ const consts = {
   SUPABASE_PROJECT_URL: process.env.SUPABASE_PROJECT_URL || '',
   SUPABASE_API_KEY: process.env.SUPABASE_API_KEY || '',
   STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY || '',
-  STRIPE_SECRET_KEY: process.env.STRIPE_PRIVATE_KEY || '',
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || '',
 };
 
 export { consts };
