@@ -15,7 +15,7 @@ const Pay: NextPage = () => {
         country: 'US',
         currency: 'usd',
         total: {
-          label: 'avatars',
+          label: 'ChefKiss',
           amount,
         },
         requestPayerName: true,
@@ -65,7 +65,23 @@ const Pay: NextPage = () => {
   }, [stripe]);
 
   if (paymentRequest) {
-    return <PaymentRequestButtonElement options={{ paymentRequest }} />;
+    const options = {
+      paymentRequest,
+      style: {
+        paymentRequestButton: {
+          type: 'default' as 'default',
+          theme: 'light' as 'light',
+          height: '64px',
+        },
+      }
+    }
+    return (
+      <div className='fixed inset-x-0 bottom-0 p-6'>
+        <div className='flex items-center justify-center w-10/12'>
+          <PaymentRequestButtonElement options={options} />
+        </div>
+      </div>
+    );
   }
 
   return (
