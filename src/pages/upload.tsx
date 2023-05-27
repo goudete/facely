@@ -23,48 +23,52 @@ const Upload: NextPage = () => {
   };
 
   const onUploadClick = async () => {
-    try {
-      if (images.length < 5) {
-        alert('Please select at least 5 selfies.\n This helps guarantee good avatars.');
-        return;
-      }
-      const currentUpload = Date.now().toString();
-      const folderName = `${number}/${currentUpload}/`;
-      router.push({ pathname: '/themes', query: { number, folder: folderName } });
-      for (const image of images) {
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            fileName: image.file.name,
-            fileType: image.file.type,
-            folderName,
-          }),
-        });
+    if (images.length < 5) {
+      alert('Please select at least 5 selfies.\n This helps guarantee good avatars.');
+      return;
+    }
 
+    const currentUpload = Date.now().toString();
+    const folderName = `${number}/${currentUpload}/`;
+
+    router.push({ pathname: '/themes', query: { number, folder: folderName } });
+    
+    images.forEach((image) => {
+      fetch('/api/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fileName: `${Math.floor(Date.now() * Math.random()).toString().slice(0,9)}.jpg`,
+          fileType: image.file.type,
+          folderName,
+        }),
+      })
+      .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const { url: signedUrl } = await response.json();
-
-        const uploadResponse = await fetch(signedUrl, {
+        return response.json();
+      })
+      .then(({ url: signedUrl }) => {
+        return fetch(signedUrl, {
           method: 'PUT',
           body: image.file,
           headers: {
             'Content-Type': image.file.type,
           },
         });
-
+      })
+      .then(uploadResponse => {
         if (!uploadResponse.ok) {
           throw new Error(`Failed to upload image: status code ${uploadResponse.status}`);
         }
-      }
-    } catch (error) {
-      console.error('Error uploading images');
-    }
+      })
+      .catch(error => {
+        console.error('Error uploading images', error);
+      });
+    });
   };
 
   return (
