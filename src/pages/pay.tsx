@@ -77,9 +77,7 @@ const Pay: NextPage = () => {
     }
     return (
       <div className='fixed inset-x-0 bottom-0 p-6'>
-        <div className='flex items-center justify-center w-10/12'>
-          <PaymentRequestButtonElement options={options} />
-        </div>
+        <PaymentRequestButtonElement options={options} />
       </div>
     );
   }
