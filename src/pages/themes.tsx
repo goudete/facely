@@ -26,6 +26,10 @@ const Themes: NextPage = () => {
       pathname: '/home',
       query: { number },
     });
+    let gender = '';
+    if (typeof window !== 'undefined') {
+      gender = localStorage.getItem('gender') || '';
+    }
     fetch('/api/generate', {
       method: 'POST',
       headers: {
@@ -34,7 +38,8 @@ const Themes: NextPage = () => {
       body: JSON.stringify({
         phoneNumber: number,
         folderName: folder,
-        theme: getThemeKeyById(selectedTheme)
+        theme: getThemeKeyById(selectedTheme),
+        gender
       }),
     });
   }
