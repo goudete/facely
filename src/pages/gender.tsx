@@ -11,17 +11,14 @@ interface GenderProps {
 
 const Genders: NextPage = () => {
   const router = useRouter();
-  const { number, folder } = router.query;
+  const { number } = router.query;
 
   const handleGenderSelection = (genderKey: string) => {
-    if (typeof window !== 'undefined') {
-        localStorage.setItem('gender', genderKey);
-    }
-    const { number: phoneNumber } = router.query;
+
     router.push({
-        pathname: '/upload',
-        query: { number: phoneNumber }
-      });
+      pathname: '/upload',
+      query: { number, gender: genderKey }
+    });
   };
 
   const genders: GenderProps[] = [
@@ -34,7 +31,7 @@ const Genders: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <GenderSubHeading />
-      <div className="flex flex-wrap justify-center mt-4 pb-48">
+      <div className="flex flex-wrap justify-center mt-20">
         {genders.map((gender) => (
           <button
             key={gender.id}
