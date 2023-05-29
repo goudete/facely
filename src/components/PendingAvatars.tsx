@@ -11,8 +11,9 @@ const PendingAvatars = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between items-center p-1 mt-6">
-        <h5 className="text-center mx-auto text-xl font-semibold text-neutral-700 max-w-[60%]">We are creating your avatars.</h5>
+      <div className="flex flex-col justify-between items-center p-1 mt-3">
+        <h5 className="text-center mx-auto text-xl font-semibold text-neutral-700 max-w-[60%]">Creating avatars...</h5>
+        <h5 className="text-center mx-auto text-xl font-semibold text-neutral-700 max-w-[60%] mt-5"> It usually takes around 15 minutes.</h5>
         <h5 className="text-center mx-auto text-xl font-semibold text-neutral-700 max-w-[60%] mt-5">You will receive a text when they are ready.</h5>
       </div>
       <div className="flex flex-col items-center py-4">
