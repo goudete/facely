@@ -3,9 +3,9 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
   return (
     <Html lang="en">
-      <title>Chefs Kiss 🤌🏽</title>
+      <title>Facely AI 🤌🏽</title>
       <Head>
-        <meta property="og:title" content="Chefs Kiss 🤌🏽" />
+        <meta property="og:title" content="Facely AI 🤌🏽" />
         <meta property="og:description" content="Create your AI avatars" />
         <meta property="og:image" content="https://public-michelangelo-ai.s3.amazonaws.com/image8.png" />
         <script

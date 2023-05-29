@@ -76,8 +76,32 @@ const Pay: NextPage = () => {
       }
     }
     return (
-      <div className='fixed inset-x-0 bottom-0 p-6'>
-        <PaymentRequestButtonElement options={options} />
+      <div className="flex flex-col pt-24">
+        <div className="flex flex-col space-y-4 px-4 justify-between items-center mt-12 w-full">
+          <div className="flex flex-col items-start space-y-2 max-w-[85%] md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-4">
+            <div className='flex flex-row justify-center'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="green" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
+            </div>
+            <div className='flex flex-row justify-center'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="green" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h2 className="text-lg font-medium ml-2">100% secure</h2>
+            </div>
+            <div className='flex flex-row justify-center'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="green" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h2 className="text-lg font-medium ml-2">100% private</h2>
+            </div>
+          </div>
+        </div>
+        <div className='fixed inset-x-0 bottom-0 p-6'>
+          <PaymentRequestButtonElement options={options} />
+        </div>
       </div>
     );
   }
