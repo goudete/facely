@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useStripe, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 import { PaymentRequest } from '@stripe/stripe-js';
+import Header from '@/components/Header';
 
 const Pay: NextPage = () => {
   const stripe = useStripe();
@@ -77,6 +78,10 @@ const Pay: NextPage = () => {
     }
     return (
       <div className="flex flex-col pt-24">
+        <Header />
+        <header className="flex justify-between items-center p-1">
+          <h1 className="text-center mx-auto text-xl">Create AI Avatars</h1>
+        </header>
         <div className="flex flex-col space-y-4 px-4 justify-between items-center mt-12 w-full">
           <div className="flex flex-col items-start space-y-2 max-w-[85%] md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-4">
             <div className='flex flex-row justify-center'>
