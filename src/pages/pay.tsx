@@ -80,10 +80,10 @@ const Pay: NextPage = () => {
       <div className="flex flex-col pt-24">
         <Header />
         <header className="flex justify-between items-center p-1">
-          <h1 className="text-center mx-auto text-xl">Create AI Avatars</h1>
+          <h1 className="text-center mx-auto text-xl">Create Avatars</h1>
         </header>
-        <div className="flex flex-col space-y-4 px-4 justify-between items-center mt-12 w-full">
-          <div className="flex flex-col items-start space-y-2 max-w-[85%] md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-4">
+        <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
+          <div className="flex flex-col items-start space-y-4 w-10/12 md:max-w-[45%] flex-wrap rounded-lg bg-gray-600 p-6">
             <div className='flex flex-row justify-center'>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="green" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
