@@ -10,7 +10,7 @@ import SampleUpload from '@/components/Images/SampleUpload';
 
 const Upload: NextPage = () => {
   const router = useRouter();
-  const { number } = router.query;
+  const { number, gender } = router.query;
   const [images, setImages] = useState<{ url: string, file: File }[]>([]);
 
   const handleImageSelection = (files: File[]) => {
@@ -31,7 +31,7 @@ const Upload: NextPage = () => {
     const currentUpload = Date.now().toString();
     const folderName = `${number}/${currentUpload}/`;
 
-    router.push({ pathname: '/themes', query: { number, folder: folderName } });
+    router.push({ pathname: '/themes', query: { number, folder: folderName, gender } });
     
     images.forEach((image) => {
       fetch('/api/upload', {

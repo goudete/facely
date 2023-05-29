@@ -7,7 +7,7 @@ const handler = async (
   res: NextApiResponse
 ) => {
   if (req.method === 'POST') {
-    const { phoneNumber, folderName, theme } = req.body;
+    const { phoneNumber, folderName, theme, gender } = req.body;
     if (phoneNumber === undefined || phoneNumber === null) {
       return res.status(400).json({ message: 'Enter a valid number' });
     }
@@ -33,7 +33,8 @@ const handler = async (
           num_samples: NUM_SAMPLES,
           upload_ckpt: UPLOAD_CKPT,
           upload_hf: UPLOAD_HF,
-          theme
+          theme,
+          gender
         }
       });
       return res.status(200).json({ message: 'Generation has started' });
