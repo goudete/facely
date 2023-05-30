@@ -19,6 +19,26 @@ const Genders: NextPage = () => {
       pathname: '/upload',
       query: { number, gender: genderKey }
     });
+
+    fetch('/api/gender', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        number,
+        gender: genderKey,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .catch(error => {
+        console.error('Error recording gender', error);
+      });
   };
 
   const genders: GenderProps[] = [

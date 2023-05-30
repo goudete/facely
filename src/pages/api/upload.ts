@@ -1,14 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import AWS from 'aws-sdk';
 import { consts } from '../../../consts';
-
-AWS.config.update({
-  region: consts.AWS_REGION,
-  accessKeyId: consts.AWS_ACCESS_KEY_ID,
-  secretAccessKey: consts.AWS_SECRET_ACCESS_KEY,
-});
-
-const s3 = new AWS.S3();
+import { s3 } from '@/lib/s3';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
