@@ -85,19 +85,19 @@ const Pay: NextPage = () => {
         <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
           <div className="flex flex-col items-start space-y-4 w-10/12 md:max-w-[45%] flex-wrap rounded-lg bg-indigo-900 p-6">
             <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" className="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
               <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
             </div>
             <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" className="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
               <h2 className="text-lg font-medium ml-2">100% secure</h2>
             </div>
             <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" className="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
               <h2 className="text-lg font-medium ml-2">100% private</h2>
