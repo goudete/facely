@@ -1,15 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import AWS from 'aws-sdk';
 import { consts } from '../../../consts';
-import { supabase } from '../../lib/supabase';
-
-AWS.config.update({
-  accessKeyId: consts.AWS_ACCESS_KEY_ID,
-  secretAccessKey: consts.AWS_SECRET_ACCESS_KEY,
-  region: consts.AWS_REGION
-});
-
-const s3 = new AWS.S3();
+import { supabase } from '@/lib/supabase';
+import { s3 } from '@/lib/s3'
 
 
 const handler = async (
