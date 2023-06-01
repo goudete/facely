@@ -16,7 +16,7 @@ const Pay: NextPage = () => {
         country: 'US',
         currency: 'usd',
         total: {
-          label: 'ChefKiss',
+          label: 'Facely',
           amount,
         },
         requestPayerName: true,
@@ -112,8 +112,11 @@ const Pay: NextPage = () => {
   }
 
   return (
-    <div>
-      No Payment Available
+    <div className="flex flex-col pt-24">
+      <Header />
+      <header className="flex justify-between items-center p-1">
+        <h1 className="text-center mx-auto text-xl">Create Avatars</h1>
+      </header>
     </div>
   );
 };
