@@ -17,7 +17,7 @@ const handler = async (
     if (theme === undefined || theme === null) {
       return res.status(400).json({ message: 'Enter a valid theme' });
     }
-    const NUM_SAMPLES = 15;
+    const NUM_SAMPLES = 30;
     const UPLOAD_HF = false;
     const UPLOAD_CKPT = false;
 
