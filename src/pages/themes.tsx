@@ -24,21 +24,8 @@ const Themes: NextPage = () => {
       return;
     }
     router.push({
-      pathname: '/home',
-      query: { number },
-    });
-
-    fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        phoneNumber: number,
-        folderName: folder,
-        theme: getThemeKeyById(selectedTheme),
-        gender
-      }),
+      pathname: '/pay',
+      query: { number, folder, theme: getThemeKeyById(selectedTheme), gender },
     });
   }
 
