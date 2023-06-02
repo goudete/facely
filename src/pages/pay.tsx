@@ -10,7 +10,7 @@ const Pay: NextPage = () => {
   const { number, folder, gender, theme } = router.query;
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
-  const [stripeError, setStripeError] = useState<boolean>(false);
+  const [stripeError, setStripeError] = useState<boolean>(true);
 
   useEffect(() => {
     if (stripe) {
