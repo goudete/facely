@@ -12,8 +12,9 @@ const handler = async (
 ) => {
   if (req.method === 'POST') {
     try {
-      const { amount, currency } = req.body;
+      const { paymentMethodId, amount, currency } = req.body;
       const paymentIntent = await stripe.paymentIntents.create({
+        payment_method: paymentMethodId,
         amount,
         currency
       });

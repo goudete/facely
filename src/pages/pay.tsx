@@ -36,6 +36,7 @@ const Pay: NextPage = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            paymentMethodId: ev.paymentMethod.id,
             amount,
             currency,
           }),
@@ -51,18 +52,14 @@ const Pay: NextPage = () => {
           );
 
           if (error) {
-            console.log("🚀 ~ file: pay.tsx:54 ~ pr.on ~ error:", error);
             ev.complete('fail');
           } else if (paymentIntent.status === 'requires_action') {
-            console.log("🚀 ~ file: pay.tsx:57 ~ pr.on ~ REQUIRES_ACTION:");
             ev.complete('success');
             stripe.confirmCardPayment(clientSecret);
           } else {
-            console.log("🚀 ~ file: pay.tsx:61 ~ pr.on ~ SUCCESS:");
             ev.complete('success');
           }
         } else {
-          console.log("🚀 ~ file: pay.tsx:65 ~ pr.on ~ ERROR IN REQUEST")
           ev.complete('fail');
         }
       });
