@@ -10,7 +10,21 @@ const Pay: NextPage = () => {
   const { number, folder, gender, theme } = router.query;
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
-  const [stripeError, setStripeError] = useState<boolean>(true);
+  const [stripeError, setStripeError] = useState<boolean>(false);
+
+  const themes = [
+    { id: 0, key: 'viking', url: "https://public-michelangelo-ai.s3.amazonaws.com/viking.png", label: 'Viking' },
+    { id: 1, key: 'gta', url: "https://public-michelangelo-ai.s3.amazonaws.com/gta.png", label: 'GTA' },
+    { id: 2, key: 'dream', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream.jpg", label: 'Dream' },
+    { id: 3, key: 'dream_portrait', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream_portrait.jpg", label: 'Artistic Portrait' },
+    { id: 4, key: 'got', url: "https://public-michelangelo-ai.s3.amazonaws.com/got.png", label: 'Game of Thrones' }
+  ];
+
+  const getThemeLabelByKey = (key: string): string | null => {
+    const theme = themes.find(theme => theme.key === key);
+    return theme ? theme.label : null;
+  }
+
 
   useEffect(() => {
     if (stripe) {
@@ -123,7 +137,7 @@ const Pay: NextPage = () => {
       <div className="flex flex-col pt-24">
         <Header />
         <header className="flex justify-between items-center p-1">
-          <h1 className="text-center mx-auto text-xl">Create Avatars</h1>
+          <h1 className="text-center mx-auto text-xl">{`Create 30 ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
         </header>
         {stripeError && (
           <div className="flex justify-between items-center p-1 mt-12">
@@ -165,7 +179,7 @@ const Pay: NextPage = () => {
     <div className="flex flex-col pt-24">
       <Header />
       <header className="flex justify-between items-center p-1">
-        <h1 className="text-center mx-auto text-xl">Create Avatars</h1>
+        <h1 className="text-center mx-auto text-xl">{`Create 30 ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
       </header>
     </div>
   );
