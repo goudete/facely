@@ -10,6 +10,7 @@ interface ThemeProps {
   id: number;
   key: string;
   url: string;
+  label: string;
 };
 const Themes: NextPage = () => {
   const router = useRouter();
@@ -56,11 +57,11 @@ const Themes: NextPage = () => {
   }
 
   const themes: ThemeProps[] = [
-    { id: 0, key: 'viking', url: "https://public-michelangelo-ai.s3.amazonaws.com/viking.png" },
-    { id: 1, key: 'gta', url: "https://public-michelangelo-ai.s3.amazonaws.com/gta.png" },
-    { id: 2, key: 'dream', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream.jpg" },
-    { id: 3, key: 'dream_portrait', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream_portrait.jpg" },
-    { id: 4, key: 'got', url: "https://public-michelangelo-ai.s3.amazonaws.com/got.png" }
+    { id: 0, key: 'viking', url: "https://public-michelangelo-ai.s3.amazonaws.com/viking.png", label: 'Viking' },
+    { id: 1, key: 'gta', url: "https://public-michelangelo-ai.s3.amazonaws.com/gta.png", label: 'GTA' },
+    { id: 2, key: 'dream', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream.jpg", label: 'Dream' },
+    { id: 3, key: 'dream_portrait', url: "https://public-michelangelo-ai.s3.amazonaws.com/dream_portrait.jpg", label: 'Artistic Portrait' },
+    { id: 4, key: 'got', url: "https://public-michelangelo-ai.s3.amazonaws.com/got.png", label: 'Game of Thrones' }
   ];
 
   return (
@@ -90,6 +91,9 @@ const Themes: NextPage = () => {
               placeholder={'blur'}
               blurDataURL={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}
             />
+          <div className="mt-1 text-white text-sm py-1 px-2 shadow-lg w-full text-center">
+            {theme.label}
+          </div>
             {selectedTheme === theme.id && (
               <div className="absolute top-0 right-0 h-6 w-6 m-1 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
                 <svg
@@ -107,14 +111,13 @@ const Themes: NextPage = () => {
                   />
                 </svg>
               </div>
-
             )}
           </div>
         ))}
       </div>
       <ThemesButton handleClick={handleClick} />
     </div>
-  );
+  );  
 }
 
 export default Themes;
