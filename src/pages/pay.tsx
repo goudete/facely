@@ -42,23 +42,27 @@ const Pay: NextPage = () => {
         });
 
         if (response.ok) {
-          const { client_secret } = await response.json();
+          const { clientSecret } = await response.json();
 
           const { paymentIntent, error } = await stripe.confirmCardPayment(
-            client_secret,
+            clientSecret,
             { payment_method: ev.paymentMethod.id },
             { handleActions: false }
           );
 
           if (error) {
+            console.log("🚀 ~ file: pay.tsx:54 ~ pr.on ~ error:", error);
             ev.complete('fail');
           } else if (paymentIntent.status === 'requires_action') {
+            console.log("🚀 ~ file: pay.tsx:57 ~ pr.on ~ REQUIRES_ACTION:");
             ev.complete('success');
-            stripe.confirmCardPayment(client_secret);
+            stripe.confirmCardPayment(clientSecret);
           } else {
+            console.log("🚀 ~ file: pay.tsx:61 ~ pr.on ~ SUCCESS:");
             ev.complete('success');
           }
         } else {
+          console.log("🚀 ~ file: pay.tsx:65 ~ pr.on ~ ERROR IN REQUEST")
           ev.complete('fail');
         }
       });
