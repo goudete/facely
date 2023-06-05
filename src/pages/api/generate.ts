@@ -17,7 +17,7 @@ const handler = async (
     if (theme === undefined || theme === null) {
       return res.status(400).json({ message: 'Enter a valid theme' });
     }
-    if (pricingSelection === undefined || theme === null ) {
+    if (pricingSelection === undefined || pricingSelection === null ) {
       return res.status(400).json({ message: 'Enter a valid pricing selection' });
     }
 
