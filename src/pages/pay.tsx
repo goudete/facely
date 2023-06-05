@@ -145,7 +145,7 @@ const Pay: NextPage = () => {
     return (
       <div className="flex flex-col pt-24">
         <Header />
-        <header className="flex flex-col justify-between items-center p-1">
+        <header className="flex flex-col justify-between items-center p-2">
           <h1 className="text-center mx-auto text-xl">{`Create ${priceQuantityPairs[pricingSelection].quantity} ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
           <h3 className="text-center mx-auto text-md font-semibold text-neutral-700 max-w-[80%] md:max-w-[45%] mt-5">Avatars require tremendous computation power to create. We have made it as affordable as possible ❤️</h3>
         </header>
@@ -156,7 +156,7 @@ const Pay: NextPage = () => {
             </h1>
           </div>
         )}
-        <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
+        <div className="flex flex-col px-4 justify-between items-center mt-8 w-full">
           <div className="flex flex-col items-center space-y-4 w-full md:max-w-full flex-wrap p-6 justify-center">
             <div className={`flex flex-row justify-center ${pricingSelection === 'small' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('small')}>
               {pricingSelection === 'small'
@@ -212,11 +212,11 @@ const Pay: NextPage = () => {
   return (
     <div className="flex flex-col pt-24">
       <Header />
-      <header className="flex flex-col justify-between items-center p-1">
+      <header className="flex flex-col justify-between items-center p-2">
         <h1 className="text-center mx-auto text-xl">{`Create ${priceQuantityPairs[pricingSelection].quantity} ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
         <h3 className="text-center mx-auto text-md font-semibold text-neutral-700 max-w-[80%] md:max-w-[45%] mt-5">Avatars require tremendous computation power to create. We have made it as affordable as possible ❤️</h3>
       </header>
-      <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
+      <div className="flex flex-col px-4 justify-between items-center mt-8 w-full">
         <div className="flex flex-col items-center space-y-4 w-full md:max-w-full flex-wrap p-6 justify-center">
           <div className={`flex flex-row justify-center ${pricingSelection === 'small' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('small')}>
             {pricingSelection === 'small'
