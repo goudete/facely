@@ -11,6 +11,7 @@ const Pay: NextPage = () => {
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const [stripeError, setStripeError] = useState<boolean>(false);
+  const [pricingSelection, setPricingSelection] = useState('medium');
 
   const themes = [
     { id: 0, key: 'viking', url: "https://public-michelangelo-ai.s3.amazonaws.com/viking.png", label: 'Viking' },
@@ -23,12 +24,18 @@ const Pay: NextPage = () => {
   const getThemeLabelByKey = (key: string): string | null => {
     const theme = themes.find(theme => theme.key === key);
     return theme ? theme.label : null;
-  }
+  };
+
+  const priceQuantityPairs = {
+    'small': { price: 299, quantity: 20 },
+    'medium': { price: 499, quantity: 30 },
+    'large': { price: 699, quantity: 60 },
+  } as { [key: string]: { price: number, quantity: number } };
 
 
   useEffect(() => {
     if (stripe) {
-      const amount = 499;
+      const amount = priceQuantityPairs[pricingSelection].price;
       const currency = 'usd';
       const pr = stripe.paymentRequest({
         country: 'US',
@@ -90,7 +97,8 @@ const Pay: NextPage = () => {
                 phoneNumber: number,
                 folderName: folder,
                 theme,
-                gender
+                gender,
+                pricingSelection,
               }),
             });
           } else {
@@ -110,7 +118,8 @@ const Pay: NextPage = () => {
                 phoneNumber: number,
                 folderName: folder,
                 theme,
-                gender
+                gender,
+                pricingSelection,
               }),
             });
           }
@@ -136,8 +145,9 @@ const Pay: NextPage = () => {
     return (
       <div className="flex flex-col pt-24">
         <Header />
-        <header className="flex justify-between items-center p-1">
-          <h1 className="text-center mx-auto text-xl">{`Create 30 ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
+        <header className="flex flex-col justify-between items-center p-1">
+          <h1 className="text-center mx-auto text-xl">{`Create ${priceQuantityPairs[pricingSelection].quantity} ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
+          <h3 className="text-center mx-auto text-md font-semibold text-neutral-700 max-w-[80%] md:max-w-[45%] mt-5">Avatars require tremendous computation power to create. We have made it as affordable as possible ❤️</h3>
         </header>
         {stripeError && (
           <div className="flex justify-between items-center p-1 mt-12">
@@ -147,24 +157,48 @@ const Pay: NextPage = () => {
           </div>
         )}
         <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
-          <div className="flex flex-col items-start space-y-4 w-10/12 md:max-w-[45%] flex-wrap rounded-lg bg-indigo-900 p-6">
-            <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
+          <div className="flex flex-col items-center space-y-4 w-full md:max-w-full flex-wrap p-6 justify-center">
+            <div className={`flex flex-row justify-center ${pricingSelection === 'small' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('small')}>
+              {pricingSelection === 'small'
+                ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                  <circle cx="12" cy="12" r="10" fill="green" />
+                  <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                  <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+                </svg>
+              }
+              <h2 className="text-lg font-medium ml-2">$2.99 for 20 avatars</h2>
+            </div>
+            <div className={`flex flex-row justify-center ${pricingSelection === 'medium' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('medium')}>
+              {pricingSelection === 'medium'
+                ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                  <circle cx="12" cy="12" r="10" fill="green" />
+                  <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                  <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+                </svg>
+              }
               <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
             </div>
-            <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-              <h2 className="text-lg font-medium ml-2">100% secure</h2>
-            </div>
-            <div className='flex flex-row justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="green" className="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-              <h2 className="text-lg font-medium ml-2">100% private</h2>
+            <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
+              {pricingSelection === 'large'
+                ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                  <circle cx="12" cy="12" r="10" fill="green" />
+                  <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                  <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+                </svg>
+              }
+              <h2 className="text-lg font-medium ml-2">$6.99 for 60 avatars</h2>
             </div>
           </div>
         </div>
@@ -178,9 +212,56 @@ const Pay: NextPage = () => {
   return (
     <div className="flex flex-col pt-24">
       <Header />
-      <header className="flex justify-between items-center p-1">
-        <h1 className="text-center mx-auto text-xl">{`Create 30 ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
+      <header className="flex flex-col justify-between items-center p-1">
+        <h1 className="text-center mx-auto text-xl">{`Create ${priceQuantityPairs[pricingSelection].quantity} ${getThemeLabelByKey(theme as string)} Avatars`}</h1>
+        <h3 className="text-center mx-auto text-md font-semibold text-neutral-700 max-w-[80%] md:max-w-[45%] mt-5">Avatars require tremendous computation power to create. We have made it as affordable as possible ❤️</h3>
       </header>
+      <div className="flex flex-col px-4 justify-between items-center mt-12 w-full">
+        <div className="flex flex-col items-center space-y-4 w-full md:max-w-full flex-wrap p-6 justify-center">
+          <div className={`flex flex-row justify-center ${pricingSelection === 'small' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('small')}>
+            {pricingSelection === 'small'
+              ?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                <circle cx="12" cy="12" r="10" fill="green" />
+                <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+              </svg>
+            }
+            <h2 className="text-lg font-medium ml-2">$2.99 for 20 avatars</h2>
+          </div>
+          <div className={`flex flex-row justify-center ${pricingSelection === 'medium' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('medium')}>
+            {pricingSelection === 'medium'
+              ?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                <circle cx="12" cy="12" r="10" fill="green" />
+                <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+              </svg>
+            }
+            <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
+          </div>
+          <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
+            {pricingSelection === 'large'
+              ?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
+                <circle cx="12" cy="12" r="10" fill="green" />
+                <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green" strokeWidth="2" className="w-6 h-6">
+                <circle cx="12" cy="12" r="10" stroke="grey" fill="none" />
+              </svg>
+            }
+            <h2 className="text-lg font-medium ml-2">$6.99 for 60 avatars</h2>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

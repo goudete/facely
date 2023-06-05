@@ -7,7 +7,7 @@ const handler = async (
   res: NextApiResponse
 ) => {
   if (req.method === 'POST') {
-    const { phoneNumber, folderName, theme, gender } = req.body;
+    const { phoneNumber, folderName, theme, gender, pricingSelection } = req.body;
     if (phoneNumber === undefined || phoneNumber === null) {
       return res.status(400).json({ message: 'Enter a valid number' });
     }
@@ -17,7 +17,15 @@ const handler = async (
     if (theme === undefined || theme === null) {
       return res.status(400).json({ message: 'Enter a valid theme' });
     }
-    const NUM_SAMPLES = 30;
+    if (pricingSelection === undefined || pricingSelection === null ) {
+      return res.status(400).json({ message: 'Enter a valid pricing selection' });
+    }
+
+    const SAMPLE_QUANTITY = {
+      'small': 20,
+      'medium': 30,
+      'large': 60,
+    } as { [pricingSelection: string]: number };
     const UPLOAD_HF = false;
     const UPLOAD_CKPT = false;
 
@@ -30,7 +38,7 @@ const handler = async (
         },
         data: {
           s3_user_dir_prefix: folderName,
-          num_samples: NUM_SAMPLES,
+          num_samples: SAMPLE_QUANTITY[pricingSelection],
           upload_ckpt: UPLOAD_CKPT,
           upload_hf: UPLOAD_HF,
           theme,
