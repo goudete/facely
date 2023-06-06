@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import Head from 'next/head';
 
 
-const stripePromise = loadStripe("pk_live_14GXWJCaggG9wRSm6J2WXfxc00BZ6lboDV");
+const stripePromise = loadStripe("pk_test_Xe83eO00w3NS419yVk1pXWPN00t24Ogp1S");
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
