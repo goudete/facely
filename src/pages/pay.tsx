@@ -33,16 +33,22 @@ const Pay: NextPage = () => {
   } as { [key: string]: { price: number, quantity: number } };
 
 
+  const getLatestPricingSelection = () => {
+    const amount = priceQuantityPairs[pricingSelection].price;
+    return { amount, pricingSelection };
+  };
+
+
   useEffect(() => {
     if (stripe) {
-      const amount = priceQuantityPairs[pricingSelection].price;
       const currency = 'usd';
+
       const pr = stripe.paymentRequest({
         country: 'US',
-        currency: 'usd',
+        currency,
         total: {
           label: 'Facely',
-          amount,
+          amount: priceQuantityPairs[pricingSelection].price,
         },
         requestPayerName: true,
         requestPayerEmail: true,
@@ -55,6 +61,8 @@ const Pay: NextPage = () => {
       });
 
       pr.on('paymentmethod', async (ev) => {
+        const { amount, pricingSelection } = getLatestPricingSelection();
+
         const response = await fetch('/api/pay', {
           method: 'POST',
           headers: {
@@ -140,13 +148,14 @@ const Pay: NextPage = () => {
   
       paymentRequest.update({
         total: {
-          label: label,
-          amount: amount,
+          label,
+          amount,
         },
-        currency: currency,
+        currency,
       });
     }
   }, [paymentRequest, pricingSelection]);
+
 
   if (paymentRequest) {
     const options = {
