@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useStripe, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
@@ -12,6 +12,7 @@ const Pay: NextPage = () => {
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const [stripeError, setStripeError] = useState<boolean>(false);
   const [pricingSelection, setPricingSelection] = useState('medium');
+  const pricingSelectionRef = useRef(pricingSelection);
   console.log("🚀 ~ file: pay.tsx:15 ~ pricingSelection:", pricingSelection);
 
   const themes = [
@@ -35,8 +36,8 @@ const Pay: NextPage = () => {
 
 
   const getLatestPricingSelection = () => {
-    const amount = priceQuantityPairs[pricingSelection].price;
-    return { amount, pricingSelection };
+    const amount = priceQuantityPairs[pricingSelectionRef.current].price;
+    return { amount, pricingSelection: pricingSelectionRef.current };
   };
 
 
@@ -144,11 +145,13 @@ const Pay: NextPage = () => {
   }, [stripe]);
 
   useEffect(() => {
+    pricingSelectionRef.current = pricingSelection;
+
     if (paymentRequest) {
       const amount = priceQuantityPairs[pricingSelection].price;
       const label = 'Facely';
       const currency = 'usd';
-  
+
       paymentRequest.update({
         total: {
           label,
