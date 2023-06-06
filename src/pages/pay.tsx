@@ -133,27 +133,20 @@ const Pay: NextPage = () => {
   }, [stripe]);
 
   useEffect(() => {
-    if (!stripe) {
-      return;
+    if (paymentRequest) {
+      const amount = priceQuantityPairs[pricingSelection].price;
+      const label = 'Facely';
+      const currency = 'usd';
+  
+      paymentRequest.update({
+        total: {
+          label: label,
+          amount: amount,
+        },
+        currency: currency,
+      });
     }
-
-    const amount = priceQuantityPairs[pricingSelection].price;
-
-    const pr = stripe.paymentRequest({
-      country: 'US',
-      currency: 'usd',
-      total: {
-        label: 'Facely',
-        amount,
-      },
-      requestPayerName: true,
-      requestPayerEmail: true,
-    });
-
-
-    setPaymentRequest(pr);
-
-  }, [stripe, pricingSelection]);
+  }, [paymentRequest, pricingSelection]);
 
   if (paymentRequest) {
     const options = {
