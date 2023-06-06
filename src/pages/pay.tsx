@@ -42,7 +42,7 @@ const Pay: NextPage = () => {
         currency: 'usd',
         total: {
           label: 'Facely',
-          amount,
+          amount: 0,
         },
         requestPayerName: true,
         requestPayerEmail: true,
@@ -64,6 +64,7 @@ const Pay: NextPage = () => {
             paymentMethodId: ev.paymentMethod.id,
             amount,
             currency,
+            pricingSelection,
           }),
         });
 
