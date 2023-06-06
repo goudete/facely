@@ -129,7 +129,7 @@ const Pay: NextPage = () => {
         }
       });
     }
-  }, [stripe]);
+  }, [stripe, pricingSelection]);
 
   if (paymentRequest) {
     const options = {
