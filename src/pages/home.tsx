@@ -34,8 +34,7 @@ const Home: NextPage = () => {
           if (response.ok) {
             console.log('Request succeeded ✅');
             const { urls } = await response.json();
-            const cleanUrls = urls.slice(1);
-            setImages(cleanUrls);
+            setImages(urls);
             return;
           } else {
             console.error('Request failed:', response.status, response.statusText);
