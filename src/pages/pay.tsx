@@ -42,7 +42,7 @@ const Pay: NextPage = () => {
         currency: 'usd',
         total: {
           label: 'Facely',
-          amount: 0,
+          amount,
         },
         requestPayerName: true,
         requestPayerEmail: true,
@@ -131,6 +131,20 @@ const Pay: NextPage = () => {
       });
     }
   }, [stripe, pricingSelection]);
+
+  useEffect(() => {
+    if (paymentRequest) {
+      const amount = priceQuantityPairs[pricingSelection].price;
+      const label = 'Facely';
+
+      paymentRequest.update({
+        total: {
+          label,
+          amount,
+        },
+      });
+    }
+  }, [paymentRequest, pricingSelection]);
 
   if (paymentRequest) {
     const options = {
