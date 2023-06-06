@@ -42,7 +42,7 @@ const handler = async (
           upload_ckpt: UPLOAD_CKPT,
           upload_hf: UPLOAD_HF,
           theme,
-          gender
+          gender,
         }
       });
       return res.status(200).json({ message: 'Generation has started' });
