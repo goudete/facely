@@ -12,6 +12,7 @@ const Pay: NextPage = () => {
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const [stripeError, setStripeError] = useState<boolean>(false);
   const [pricingSelection, setPricingSelection] = useState('medium');
+  console.log("🚀 ~ file: pay.tsx:15 ~ pricingSelection:", pricingSelection);
 
   const themes = [
     { id: 0, key: 'viking', url: "https://public-michelangelo-ai.s3.amazonaws.com/viking.png", label: 'Viking' },
@@ -62,6 +63,8 @@ const Pay: NextPage = () => {
 
       pr.on('paymentmethod', async (ev) => {
         const { amount, pricingSelection } = getLatestPricingSelection();
+        console.log("🚀 ~ file: pay.tsx:65 ~ pr.on ~ pricingSelection:", pricingSelection);
+        console.log("🚀 ~ file: pay.tsx:65 ~ pr.on ~ amount:", amount);
 
         const response = await fetch('/api/pay', {
           method: 'POST',
