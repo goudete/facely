@@ -130,21 +130,33 @@ const Pay: NextPage = () => {
         }
       });
     }
-  }, [stripe, pricingSelection]);
+  }, [stripe]);
 
   useEffect(() => {
-    if (paymentRequest) {
-      const amount = priceQuantityPairs[pricingSelection].price;
-      const label = 'Facely';
-
-      paymentRequest.update({
-        total: {
-          label,
-          amount,
-        },
-      });
+    if (!stripe) {
+      return;
     }
-  }, [paymentRequest, pricingSelection]);
+
+    const amount = priceQuantityPairs[pricingSelection].price;
+
+    const pr = stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: {
+        label: 'Facely',
+        amount,
+      },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    });
+
+    pr.canMakePayment().then(result => {
+      if (result) {
+        setPaymentRequest(pr);
+      }
+    });
+
+  }, [stripe, pricingSelection]);
 
   if (paymentRequest) {
     const options = {
