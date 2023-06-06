@@ -150,11 +150,8 @@ const Pay: NextPage = () => {
       requestPayerEmail: true,
     });
 
-    pr.canMakePayment().then(result => {
-      if (result) {
-        setPaymentRequest(pr);
-      }
-    });
+
+    setPaymentRequest(pr);
 
   }, [stripe, pricingSelection]);
 
