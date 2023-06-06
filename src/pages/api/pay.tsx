@@ -13,6 +13,15 @@ const handler = async (
   if (req.method === 'POST') {
     try {
       const { paymentMethodId, currency, pricingSelection } = req.body;
+      if (paymentMethodId === null || paymentMethodId === undefined) {
+        return res.status(400).json({ message: 'Provide valid payment method id' });
+      }
+      if (currency === null || currency === undefined) {
+        return res.status(400).json({ message: 'Enter a valid currency' });
+      }
+      if (pricingSelection === null || pricingSelection === undefined) {
+        return res.status(400).json({ message: 'Enter a valid pricing selection' });
+      }
       const PRICING = {
         'small': 299,
         'medium': 499,
