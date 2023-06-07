@@ -11,6 +11,7 @@ const GeneratedImages = ({ images }: GeneratedImagesProps) => {
         <div key={index} className="my-2">
           <Image
             src={url}
+            unoptimized
             alt={`${index}`}
             width={250}
             height={250}
