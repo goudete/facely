@@ -214,7 +214,7 @@ const Pay: NextPage = () => {
               }
               <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
             </div>
-            <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
+            {/* <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
               {pricingSelection === 'large'
                 ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
@@ -227,7 +227,7 @@ const Pay: NextPage = () => {
                 </svg>
               }
               <h2 className="text-lg font-medium ml-2">$6.99 for 60 avatars</h2>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className='fixed inset-x-0 bottom-0 p-6'>
@@ -274,7 +274,7 @@ const Pay: NextPage = () => {
             }
             <h2 className="text-lg font-medium ml-2">$4.99 for 30 avatars</h2>
           </div>
-          <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
+          {/* <div className={`flex flex-row justify-center ${pricingSelection === 'large' ? 'bg-indigo-900' : 'bg-gray-400'} rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 cursor-pointer`} onClick={() => setPricingSelection('large')}>
             {pricingSelection === 'large'
               ?
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-7 h-7">
@@ -287,7 +287,7 @@ const Pay: NextPage = () => {
               </svg>
             }
             <h2 className="text-lg font-medium ml-2">$6.99 for 60 avatars</h2>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
