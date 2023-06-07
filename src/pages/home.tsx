@@ -67,7 +67,7 @@ const Home: NextPage = () => {
   }
   const onCreateMoreClick = () => {
     router.push({
-      pathname: '/upload',
+      pathname: '/gender',
       query: { number }
     });
   }
