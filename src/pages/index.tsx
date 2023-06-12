@@ -8,8 +8,9 @@ import GetStartedButton from '@/components/Buttons/GetStartedButton';
 const images = [
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo5.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/rau.jpeg', alt: 'Image 5' },
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/marle_generated.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/marle_square_crop.jpg', alt: 'Image 7' },
-  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/ale-avatar.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/ale-raw.png', alt: 'Image 6' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/sam_generated.PNG', original: 'https://public-michelangelo-ai.s3.amazonaws.com/sam_square_crop.jpg', alt: 'Image 69' },
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/image1.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/cropped.png', alt: 'Image 5' },
+  { src: 'https://public-michelangelo-ai.s3.amazonaws.com/ale-avatar.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/ale-raw.png', alt: 'Image 6' },
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/demo3.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/wa.png', alt: 'Image 6' },
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/image8.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/miel.png', alt: 'Image 6' },
   { src: 'https://public-michelangelo-ai.s3.amazonaws.com/luis_got.png', original: 'https://public-michelangelo-ai.s3.amazonaws.com/luis_raw_square_crop.jpg', alt: 'Image 2' },
